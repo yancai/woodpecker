@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}mine{% endblock %}
+{% block extra_head %}
+{% endblock %}
+{% block content %}
+    <h1>TASK: #{{ task.id }}</h1>
+    <hr>
+
+
+    <div>
+        <form method="post" action="">
+            {% csrf_token %}
+            <dl class="dl-horizontal">
+                <dt>任务名称</dt>
+                <dd>{{ form.name }}</dd>
+
+                <dt>任务状态</dt>
+                <dd>{{ form.task_status }}</dd>
+
+                <dt>起始日期</dt>
+                <dd>{{ form.start_date }}</dd>
+
+                <dt>起始时间</dt>
+                <dd>{{ form.start_time }}</dd>
+
+                <dt>截止日期</dt>
+                <dd>{{ form.end_date }}</dd>
+
+                <dt>截止时间</dt>
+                <dd>{{ form.end_time }}</dd>
+
+                <dt>计划用时</dt>
+                <dd>{{ form.hours }}</dd>
+
+                <dt>任务类型</dt>
+                <dd>{{ form.task_type }}</dd>
+
+                <dt>任务描述</dt>
+                <dd>{{ form.describe }}</dd>
+
+                <dt>实际截止日期</dt>
+                <dd>{{ form.finish_date }}</dd>
+
+                <dt>实际截止时间</dt>
+                <dd>{{ form.finish_time }}</dd>
+
+                <dt>实际用时</dt>
+                <dd>{{ form.spent_hours }}</dd>
+
+                <dt>任务价值</dt>
+                <dd>{{ form.value }}</dd>
+
+                <dt>完成情况评价</dt>
+                <dd>{{ form.rating }}</dd>
+
+                <dt>偏差类型</dt>
+                <dd>{{ form.contrast_type }}</dd>
+
+                <dt>偏差类型分析</dt>
+                <dd>{{ form.contrast_analysis }}</dd>
+            </dl>
+
+            <input type="submit" class="btn" value="修改">
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse"
+                    data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="{% url 'home' %}">Woodpecker</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="{% url 'task_list' %}">task</a></li>
+                    <li><a href="{% url 'analysis_list' %}">analysis</a></li>
+                </ul>
+
+
+                {% if request.user.is_authenticated %}
+                    <div class="pull-right">
+                        <a href="{% url 'user_detail' %}">{{ request.user }}</a>
+                        <a class="btn" href="{% url 'logout' %}">退出</a>
+                    </div>
+                {% else %}
+                    <form class="navbar-form pull-right"
+                          action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        {% if login_form.errors %}
+                            <span class="alert-error">登录失败</span>
+                        {% endif %}
+                        {{ login_form.email }}
+                        {{ login_form.password }}
+                        <input class="btn" type="submit" value="登录">
+                        <a class="btn" href={% url "register" %}>注册</a>
+                        <input type="hidden" name="next" value="{% url 'task_list' %}"/>
+                    </form>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+
+    <hr>
+
+    <footer class="footer">
+        <p>Author: afei</p>
+    </footer>
+</div>
+
+
+</body>
+<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+{% block ext_js %}{% endblock %}
+
+{#<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>#}
+{#<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>#}
+</html>

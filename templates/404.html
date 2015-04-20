@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>404</title>
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse"
+                    data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="{% url 'home' %}">Woodpecker</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="{% url 'task_list' %}">task</a></li>
+                    <li><a href="{% url 'analysis_list' %}">analysis</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1>404</h1>
+    <h3>木有该页面哦</h3>
+    <h4>╮(︺﹏︺)╭</h4>
+
+    <hr>
+
+    <footer class="footer">
+        <p>Author: afei</p>
+    </footer>
+</div>
+
+
+</body>
+</html>

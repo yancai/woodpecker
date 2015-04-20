@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <script src="{% static "js/bootstrap.js" %}"></script>
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>注册用户</title>
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse"
+                    data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="{% url 'home' %}">Woodpecker</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <h1>创建新用户</h1>
+
+    <div>
+        <form class="form-horizontal" method="post">
+            {% csrf_token %}
+            <div class="control-group">
+                <label class="control-label" for="id_email">Email</label>
+
+                <div class="controls">
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="id_nickname">昵称</label>
+
+                <div class="controls">
+                    {{ form.nickname }}
+                    {{ form.nickname.errors }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="id_password">密码</label>
+
+                <div class="controls">
+                    {{ form.password }}
+                    {{ form.password.errors }}
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="id_re_password">确认密码</label>
+
+                <div class="controls">
+                    {{ form.re_password }}
+                    {{ form.re_password.errors }}
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">注册</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <hr>
+
+    <footer>
+        <p>Author: afei</p>
+    </footer>
+</div>
+
+</body>
+</html>
